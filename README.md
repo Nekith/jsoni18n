@@ -1,13 +1,33 @@
 # jsoni18n
 
-In agnostic internationalization library working with JSON files in Haxe.
+An agnostic internationalization library working with JSON files in Haxe.
 
 First release is coming.
 
-## Agnostic
+Agnostic?
 
 * Translations files don't need to be in a specific location.
 * It can work with or without OpenFL.
+
+## Installation
+
+In a shell, execute:
+
+```
+haxelib install jsoni18n
+```
+
+If you have a Project.xml, add:
+
+```
+<haxelib name="jsoni18n" />
+```
+
+If you use the _haxe_ command and its flags, add:
+
+```
+haxe -lib jsoni18n ...
+```
 
 ## Usage
 

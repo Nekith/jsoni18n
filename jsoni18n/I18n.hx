@@ -25,11 +25,7 @@ class I18n
       if (prefix != null) {
         name = prefix + name;
       }
-      if (name.indexOf("/") != -1) {
-        update(trads, name, data.get(key));
-      } else {
-        trads.set(name, data.get(key));
-      }
+      update(trads, name, data.get(key));
     }
   }
 
@@ -52,16 +48,28 @@ class I18n
   {
   }
 
-  private static function update(el : DynamicObject<Dynamic>, rest : String, data : Dynamic) : Void
+  private static function update(el : DynamicObject<Dynamic>, rest : String, data : DynamicObject<Dynamic>) : Void
   {
     var pos : Int = rest.indexOf("/");
     if (pos == -1) {
-      el.set(rest, data);
+      if (el.exists(rest) == true) {
+        el = el.get(rest);
+        for (key in data.keys()) {
+          el.set(key, data.get(key));
+        }
+      } else {
+        el.set(rest, data);
+      }
     } else {
       var part : String = rest.substr(0, pos);
       rest = rest.substr(pos + 1);
-      var sub : DynamicObject<Dynamic> = new DynamicObject<Dynamic>();
-      el.set(part, sub);
+      var sub : DynamicObject<Dynamic>;
+      if (el.exists(part) == false) {
+        sub = new DynamicObject<Dynamic>();
+        el.set(part, sub);
+      } else {
+        sub = el.get(part);
+      }
       update(sub, rest, data);
     }
   }

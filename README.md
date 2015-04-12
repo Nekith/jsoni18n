@@ -17,13 +17,13 @@ In a shell, execute:
 haxelib install jsoni18n
 ```
 
-If you have a Project.xml, add:
+If you use a Project.xml, add:
 
 ```
 <haxelib name="jsoni18n" />
 ```
 
-If you use the _haxe_ command and its flags, add:
+If you use the haxe command and its flags, add:
 
 ```
 haxe -lib jsoni18n ...

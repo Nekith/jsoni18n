@@ -40,12 +40,9 @@ class I18n
     return trads.get(id);
   }
 
-  public static function remove(prefix : String) : Void
-  {
-  }
-
   public static function clear() : Void
   {
+    trads = new DynamicObject<Dynamic>();
   }
 
   private static function update(el : DynamicObject<Dynamic>, rest : String, data : DynamicObject<Dynamic>) : Void
@@ -107,11 +104,7 @@ abstract DynamicObject<T>(Dynamic<T>) from Dynamic<T>
   @:arrayAccess
   public inline function get(key : String) : Null<T>
   {
-#if js
-      return untyped this[key];
-#else
       return Reflect.field(this, key);
-#end
   }
 
   public inline function exists(key : String) : Bool

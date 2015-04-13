@@ -77,7 +77,7 @@ If you use OpenFL, you can load a file:
 I18n.loadFromFile("assets/data/i18n_" + lang + ".json");
 ```
 
-Or directly from a string:
+Or/else directly from a string:
 
 ```haxe
 var jsonFileContent : String = myLangFileLoader();

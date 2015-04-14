@@ -1,7 +1,5 @@
 # jsoni18n
 
-IT'S NOT AVAILABLE IN HAXELIB YET. Soon.
-
 An agnostic internationalization library working with JSON files in Haxe.
 
 Agnostic?
@@ -115,8 +113,6 @@ Default variable prefix is ":". You can change it like this:
 ```haxe
 I18n.varPrefix = "@";
 ```
-
-Coming: set the depth separator.
 
 ## License
 

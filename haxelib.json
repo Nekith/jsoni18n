@@ -4,7 +4,7 @@
   "license": "BSD",
   "tags": ["cross", "i18n", "translation", "internationalization"],
   "description": "An agnostic internationalization library working with JSON files. OpenFL is optional.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "releasenote": "Initial beta release.",
   "contributors": ["Nekith"],
   "dependencies": {}

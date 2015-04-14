@@ -39,6 +39,7 @@ It's JSON, objects and strings:
 {
   "welcome": {
     "hello": "Hoy!",
+    "subtitle": "Welcome, :name!",
     "content": {
       "main": "Main content should be longer but it's boring.",
       "side": "Some useful side notes to shine in society."
@@ -49,12 +50,6 @@ It's JSON, objects and strings:
   }
 }
 ```
-
-### Configuration
-
-Default depth operator is "/".
-
-Coming: set the depth separator.
 
 ### Basics
 
@@ -92,16 +87,36 @@ var hello : String = I18n.tr("welcome/hello");
 
 ### Prefix
 
-You can add prefixes to keys from all data fetched by a loadFromFile or loadFromString call like this:
+You can add prefixes to keys from all data fetched by a loadFromFile() or loadFromString() like this:
 
 ```haxe
 I18n.loadFromString(data, "ui/");
 I18n.tr("ui/welcome/hello"); // Hoy!
 ```
 
-### Arguments
+### Variables
 
-Coming.
+You can pass variables to strings returned by tr() like this:
+
+```haxe
+I18n.tr("welcome/subtitle", [ "name" => "Nekith" ]); // Welcome, Nekith!
+```
+
+### Configuration
+
+Default depth delimiter is "/". You can change it like this:
+
+```haxe
+I18n.depthDelimiter = "_";
+```
+
+Default variable prefix is ":". You can change it like this:
+
+```haxe
+I18n.varPrefix = "@";
+```
+
+Coming: set the depth separator.
 
 ## License
 

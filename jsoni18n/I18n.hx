@@ -8,6 +8,7 @@ import openfl.Assets;
 class I18n
 {
   static public var depthDelimiter : String = "/";
+  static public var varPrefix : String = ":";
 
 #if openfl
   public static function loadFromFile(filename : String, ?prefix : String) : Void
@@ -31,15 +32,23 @@ class I18n
     }
   }
 
-  public static function tr(id : String, ?args : Map<String, String>) : String
+  public static function tr(id : String, ?vars : Map<String, String>) : String
   {
     if (trads == null) {
       return "";
     }
+    var str : String;
     if (id.indexOf(depthDelimiter) != -1) {
-      return fetch(trads, new String(id));
+      str = fetch(trads, new String(id));
+    } else {
+      str = trads.get(id);
     }
-    return trads.get(id);
+    if (vars != null) {
+      for (key in vars.keys()) {
+        str = StringTools.replace(str, varPrefix + key, vars[key]);
+      }
+    }
+    return str;
   }
 
   public static function clear() : Void

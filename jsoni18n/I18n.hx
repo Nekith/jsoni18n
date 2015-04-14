@@ -7,6 +7,8 @@ import openfl.Assets;
 
 class I18n
 {
+  static public var depthDelimiter : String = "/";
+
 #if openfl
   public static function loadFromFile(filename : String, ?prefix : String) : Void
   {
@@ -34,7 +36,7 @@ class I18n
     if (trads == null) {
       return "";
     }
-    if (id.indexOf("/") != -1) {
+    if (id.indexOf(depthDelimiter) != -1) {
       return fetch(trads, new String(id));
     }
     return trads.get(id);
@@ -47,7 +49,7 @@ class I18n
 
   private static function update(el : DynamicObject<Dynamic>, rest : String, data : DynamicObject<Dynamic>) : Void
   {
-    var pos : Int = rest.indexOf("/");
+    var pos : Int = rest.indexOf(depthDelimiter);
     if (pos == -1) {
       if (el.exists(rest) == true) {
         el = el.get(rest);
@@ -73,7 +75,7 @@ class I18n
 
   private static function fetch(el : DynamicObject<Dynamic>, rest : String) : String
   {
-    var pos : Int = rest.indexOf("/");
+    var pos : Int = rest.indexOf(depthDelimiter);
     if (pos == -1) {
       return el.get(rest);
     }

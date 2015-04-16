@@ -15,7 +15,7 @@ In a shell, execute:
 haxelib install jsoni18n
 ```
 
-If you use a Project.xml, add:
+If you use an OpenFL XML file (Project.xml), add:
 
 ```
 <haxelib name="jsoni18n" />
@@ -39,7 +39,7 @@ It's JSON, objects and strings:
     "hello": "Hoy!",
     "subtitle": "Welcome, :name!",
     "content": {
-      "main": "Main content should be longer but it's boring.",
+      "main": "Main content should be longer but you get the idea.",
       "side": "Some useful side notes to shine in society."
     }
   },
@@ -60,7 +60,7 @@ import jsoni18n.I18n;
 For the following examples, we assume you do something like this:
 
 ```haxe
-// it could be Reg.lang or Context.userLang or App.currentLanguage ...
+// it could be Reg.lang, context.userLang, App.instance.settings["currentLanguage"] or ...
 var lang : String = myGetCurrentLanguage();
 ```
 

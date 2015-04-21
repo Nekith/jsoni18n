@@ -1,7 +1,7 @@
 {
   "name": "jsoni18n",
   "url": "https://github.com/Nekith/jsoni18n",
-  "license": "BSD",
+  "license": "New BSD",
   "tags": ["cross", "i18n", "translation", "internationalization"],
   "description": "An agnostic internationalization library working with JSON files.",
   "version": "0.3.0",

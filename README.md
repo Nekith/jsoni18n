@@ -1,6 +1,6 @@
 # jsoni18n
 
-An agnostic internationalization library working with JSON files in Haxe.
+A flexible internationalization library working with JSON files in Haxe.
 
 Agnostic?
 

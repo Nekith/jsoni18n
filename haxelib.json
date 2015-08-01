@@ -4,7 +4,7 @@
   "license": "New BSD",
   "tags": ["cross", "i18n", "translation", "internationalization"],
   "description": "A flexible internationalization library working with JSON files.",
-  "version": "0.3.0",
+  "version": "0.2.1",
   "releasenote": "Initial beta release.",
   "contributors": ["Nekith"],
   "dependencies": {}

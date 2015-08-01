@@ -40,8 +40,10 @@ class I18n
         var str : String;
         if (id.indexOf(depthDelimiter) != -1) {
             str = fetch(trads, new String(id));
-        } else {
+        } else if (trads.exists(id) == true) {
             str = trads.get(id);
+        } else {
+            str = id;
         }
         if (vars != null) {
             for (key in vars.keys()) {

@@ -2,9 +2,8 @@
 
 A flexible internationalization library working with JSON files in Haxe.
 
-Flexible?
-
 * Translations files don't need to be in a specific location.
+* They don't even need to be files.
 * It can work with or without OpenFL.
 
 ## Installation
@@ -70,7 +69,7 @@ If you use OpenFL, you can load a file:
 I18n.loadFromFile("assets/data/i18n_" + lang + ".json");
 ```
 
-Or/else directly from a string:
+Or directly from a string:
 
 ```haxe
 var jsonFileContent : String = myLangFileLoader();
@@ -116,4 +115,4 @@ I18n.varPrefix = "@";
 
 ## License
 
-New-BSD licensed. See LICENSE file.
+3-clause BSD. See LICENSE file.

@@ -20,7 +20,7 @@ OpenFL project XML file:
 <haxelib name="jsoni18n" />
 ```
 
-OpenFL project XML file:
+OpenFL project HXP file:
 
 ```haxe
 haxelibs.push(new Haxelib("jsoni18n"));

@@ -102,8 +102,8 @@ I18n.tr("welcome/subtitle", [ "name" => "Nekith" ]); // Welcome, Nekith!
 ### Configuration
 
 ```haxe
-I18n.depthDelimiter = "_"; // default: "/"
-I18n.varPrefix = "@"; // default: ":"
+I18n.depthDelimiter  =  "_";  // default: "/"
+I18n.varPrefix       =  "@";  // default: ":"
 ```
 
 ## License

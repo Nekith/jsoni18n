@@ -101,16 +101,9 @@ I18n.tr("welcome/subtitle", [ "name" => "Nekith" ]); // Welcome, Nekith!
 
 ### Configuration
 
-Default depth delimiter is "/". You can change it like this:
-
 ```haxe
-I18n.depthDelimiter = "_";
-```
-
-Default variable prefix is ":". You can change it like this:
-
-```haxe
-I18n.varPrefix = "@";
+I18n.depthDelimiter = "_"; // default: "/"
+I18n.varPrefix = "@"; // default: ":"
 ```
 
 ## License

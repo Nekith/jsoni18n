@@ -14,10 +14,16 @@ Haxelib:
 haxelib install jsoni18n
 ```
 
-OpenFL XML file (Project.xml):
+OpenFL project XML file:
 
-```
+```xml
 <haxelib name="jsoni18n" />
+```
+
+OpenFL project XML file:
+
+```haxe
+haxelibs.push(new Haxelib("jsoni18n"));
 ```
 
 Haxe command line arguments:

@@ -4,7 +4,7 @@ A flexible internationalization library working with JSON files in Haxe.
 
 * Translations files don't need to be in a specific location.
 * They don't even need to be files.
-* It can work with or without OpenFL.
+* It work with or without OpenFL.
 
 ## Installation
 

@@ -1,21 +1,11 @@
 package jsoni18n;
 
 import haxe.Json;
-#if openfl
-import openfl.Assets;
-#end
 
 class I18n
 {
     static public var depthDelimiter : String = "/";
     static public var varPrefix : String = ":";
-
-#if openfl
-    public static function loadFromFile(filename : String, ?prefix : String) : Void
-    {
-        loadFromString(Assets.getText(filename), prefix);
-    }
-#end
 
     public static function loadFromString(content : String, ?prefix : String) : Void
     {

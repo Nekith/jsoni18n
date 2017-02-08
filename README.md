@@ -2,10 +2,6 @@
 
 A flexible internationalization library working with JSON files in Haxe.
 
-* Translations files don't need to be in a specific location.
-* They don't even need to be files.
-* It work with or without OpenFL.
-
 [![Build Status](https://travis-ci.org/Nekith/jsoni18n.svg?branch=master)](https://travis-ci.org/Nekith/jsoni18n)
 
 ## Installation
@@ -71,16 +67,12 @@ For the following examples, we assume you do something like this:
 var lang : String = myGetCurrentLanguage();
 ```
 
-If you use OpenFL, you can load a file:
-
-```haxe
-I18n.loadFromFile("assets/data/i18n_" + lang + ".json");
-```
-
-Or directly from a string:
+Then you load data:
 
 ```haxe
 var jsonFileContent : String = myLangFileLoader();
+// or if you use OpenFL:
+// var jsonFileContent : String = Assets.getText(filename);
 I18n.loadFromString(jsonFileContent);
 ```
 
@@ -92,7 +84,7 @@ var hello : String = I18n.tr("welcome/hello");
 
 ### Prefix
 
-You can add prefixes to keys from all data fetched by a loadFromFile() or loadFromString() like this:
+You can add prefixes to keys from all data fetched by loadFromString() like this:
 
 ```haxe
 I18n.loadFromString(data, "ui/");

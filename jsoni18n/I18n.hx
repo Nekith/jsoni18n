@@ -25,15 +25,16 @@ class I18n
     public static function tr(id : String, ?vars : Map<String, String>) : String
     {
         if (trads == null) {
-            return "";
+            return id;
         }
-        var str : String;
+        var str : String = id;
         if (id.indexOf(depthDelimiter) != -1) {
-            str = fetch(trads, new String(id));
+            var o = fetch(trads, new String(id));
+            if (o != null) {
+                str = o;
+            }
         } else if (trads.exists(id) == true) {
             str = trads.get(id);
-        } else {
-            str = id;
         }
         if (vars != null) {
             for (key in vars.keys()) {
@@ -83,7 +84,7 @@ class I18n
         var part : String = rest.substr(0, pos);
         rest = rest.substr(pos + 1);
         if (el.exists(part) == false) {
-            return "";
+            return null;
         }
         return fetch(el.get(part), rest);
     }

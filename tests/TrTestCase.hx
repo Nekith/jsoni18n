@@ -27,21 +27,31 @@ class TrTestCase extends TestCase
 
     public function testBasic() : Void
     {
-        assertEquals(I18n.tr("title"), "jsoni18n tests");
+        assertEquals("jsoni18n tests", I18n.tr("title"));
+    }
+
+    public function testUnknown() : Void
+    {
+        assertEquals("brouzoufs", I18n.tr("brouzoufs"));
+    }
+
+    public function testWrongDepth() : Void
+    {
+        assertEquals("title/lol", I18n.tr("title/lol"));
     }
 
     public function testDepth() : Void
     {
-        assertEquals(I18n.tr("welcome/hello"), "Hoy!");
+        assertEquals("Hoy!", I18n.tr("welcome/hello"));
     }
 
     public function testVar() : Void
     {
-        assertEquals(I18n.tr("welcome/subtitle", [ "name" => "Nekith" ]), "Welcome, Nekith!");
+        assertEquals("Welcome, Nekith!", I18n.tr("welcome/subtitle", [ "name" => "Nekith" ]));
     }
 
     public function testUtf() : Void
     {
-        assertEquals(I18n.tr("welcome/content/main"), "Le contenu principal devrait être plus long, mais vous saisissez l\'idée.");
+        assertEquals("Le contenu principal devrait être plus long, mais vous saisissez l\'idée.", I18n.tr("welcome/content/main"));
     }
 }

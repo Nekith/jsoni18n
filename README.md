@@ -120,7 +120,7 @@ I18n.varPrefix       =  "@";  // default: ":"
 
 ## Development
 
-### tests
+### Tests
 
 ```
 cd tests

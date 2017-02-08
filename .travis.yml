@@ -1,10 +1,10 @@
 language: haxe
 
 install:
-    - ls
-    - haxelib install Nekith/jsoni18n
+    - haxelib install hxcpp
 
 script:
+    - haxelib dev jsoni18n .
     - cd tests
     - haxe -main Main -lib jsoni18n -cpp build
     - cd build

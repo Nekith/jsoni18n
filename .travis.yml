@@ -2,7 +2,7 @@ language: haxe
 
 install:
     - haxelib install hxcpp
-    - haxelib install .
+    - haxelib install Nekith/jsoni18n
 
 script:
     - cd tests

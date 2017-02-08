@@ -6,6 +6,8 @@ A flexible internationalization library working with JSON files in Haxe.
 * They don't even need to be files.
 * It work with or without OpenFL.
 
+[![Build Status](https://travis-ci.org/Nekith/jsoni18n.svg?branch=master)](https://travis-ci.org/Nekith/jsoni18n)
+
 ## Installation
 
 Haxelib:
@@ -115,3 +117,14 @@ I18n.varPrefix       =  "@";  // default: ":"
 ## License
 
 3-clause BSD. See LICENSE file.
+
+## Development
+
+### tests
+
+```
+cd tests
+haxe -main Main -lib jsoni18n -cpp build
+cd build
+./Main
+```

@@ -18,9 +18,6 @@ class TrTestCase extends TestCase
                     "side": "Some useful side notes to shine in society."
                 }
             },
-            "secret": {
-                "intro": "It\'s a secret page! Do you have authorization?"
-            },
             "title": "jsoni18n tests"
         }';
         I18n.depthDelimiter = "/";

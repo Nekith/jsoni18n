@@ -3,9 +3,9 @@
   "url": "https://github.com/Nekith/jsoni18n",
   "license": "BSD",
   "tags": ["cross", "i18n", "translation", "internationalization"],
-  "description": "A flexible internationalization library working with JSON files.",
-  "version": "0.2.2",
-  "releasenote": "Initial beta release.",
+  "description": "A flexible internationalization library working with JSON files in Haxe.",
+  "version": "0.2.3",
+  "releasenote": "Fix the files architecture in release.",
   "contributors": ["Nekith"],
   "dependencies": {}
 }

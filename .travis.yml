@@ -1,0 +1,11 @@
+language: haxe
+
+install:
+    - haxelib install hxcpp
+    - haxelib install .
+
+script:
+    - cd tests
+    - haxe -main Main -lib jsoni18n -cpp build
+    - cd build
+    - ./Main

@@ -123,6 +123,7 @@ I18n.varPrefix       =  "@";  // default: ":"
 ### Tests
 
 ```
+haxelib dev jsoni18n .
 cd tests
 haxe -main Main -lib jsoni18n -cpp build
 cd build

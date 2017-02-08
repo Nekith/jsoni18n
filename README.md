@@ -2,26 +2,31 @@
 
 A flexible internationalization library working with JSON files in Haxe.
 
-Flexible?
-
 * Translations files don't need to be in a specific location.
-* It can work with or without OpenFL.
+* They don't even need to be files.
+* It work with or without OpenFL.
 
 ## Installation
 
-In a shell, execute:
+Haxelib:
 
 ```
 haxelib install jsoni18n
 ```
 
-If you use an OpenFL XML file (Project.xml), add:
+OpenFL project XML file:
 
-```
+```xml
 <haxelib name="jsoni18n" />
 ```
 
-If you use the haxe command and its flags, add:
+OpenFL project HXP file:
+
+```haxe
+haxelibs.push(new Haxelib("jsoni18n"));
+```
+
+Haxe command line arguments:
 
 ```
 haxe -lib jsoni18n ...
@@ -70,7 +75,7 @@ If you use OpenFL, you can load a file:
 I18n.loadFromFile("assets/data/i18n_" + lang + ".json");
 ```
 
-Or/else directly from a string:
+Or directly from a string:
 
 ```haxe
 var jsonFileContent : String = myLangFileLoader();
@@ -102,18 +107,11 @@ I18n.tr("welcome/subtitle", [ "name" => "Nekith" ]); // Welcome, Nekith!
 
 ### Configuration
 
-Default depth delimiter is "/". You can change it like this:
-
 ```haxe
-I18n.depthDelimiter = "_";
-```
-
-Default variable prefix is ":". You can change it like this:
-
-```haxe
-I18n.varPrefix = "@";
+I18n.depthDelimiter  =  "_";  // default: "/"
+I18n.varPrefix       =  "@";  // default: ":"
 ```
 
 ## License
 
-New-BSD licensed. See LICENSE file.
+3-clause BSD. See LICENSE file.

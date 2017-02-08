@@ -2,7 +2,7 @@
   "name": "jsoni18n",
   "url": "https://github.com/Nekith/jsoni18n",
   "license": "BSD",
-  "tags": ["cross", "i18n", "translation", "internationalization"],
+  "tags": ["cross", "i18n", "translation", "internationalization", "localization"],
   "description": "A flexible internationalization library working with JSON files in Haxe.",
   "version": "0.2.3",
   "releasenote": "Fix the files architecture in release.",

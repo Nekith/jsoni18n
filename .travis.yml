@@ -1,5 +1,9 @@
 language: haxe
 
+os:
+    - linux
+    - osx
+
 install:
     - haxelib install hxcpp
 

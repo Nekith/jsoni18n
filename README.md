@@ -104,6 +104,8 @@ I18n.tr("welcome/subtitle", [ "name" => "Nekith" ]); // Welcome, Nekith!
 
 ### Pluralization
 
+It also handles pluralization for your convenience.
+
 ```haxe
 I18n.tr("news/list", [ "_" => 0 ]); // Nothing to display.
 I18n.tr("news/list", [ "_" => 12 ]); // 12 new items.

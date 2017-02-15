@@ -5,11 +5,11 @@ import jsoni18n.I18n;
 
 class ConfigTestCase extends TestCase
 {
-    var json : String;
+    var i18n : I18n;
 
     override public function setup() : Void
     {
-        json = '{
+        var json : String = '{
             "welcome": {
                 "hello": "Hoy!",
                 "subtitle": "Welcome, @name!",
@@ -26,24 +26,25 @@ class ConfigTestCase extends TestCase
             },
             "title": "jsoni18n tests"
         }';
-        I18n.depthDelimiter = "|";
-        I18n.varPrefix = "@";
-        I18n.pluralizationVar = "n";
-        I18n.loadFromString(json);
+        i18n = new I18n();
+        i18n.depthDelimiter = "|";
+        i18n.varPrefix = "@";
+        i18n.pluralizationVar = "n";
+        i18n.loadFromString(json);
     }
 
     public function testDepthDelimiter() : Void
     {
-        assertEquals("Hoy!", I18n.tr("welcome|hello"));
+        assertEquals("Hoy!", i18n.tr("welcome|hello"));
     }
 
     public function testVarPrefix() : Void
     {
-        assertEquals("Welcome, Nekith!", I18n.tr("welcome|subtitle", [ "name" => "Nekith" ]));
+        assertEquals("Welcome, Nekith!", i18n.tr("welcome|subtitle", [ "name" => "Nekith" ]));
     }
 
     public function testPluralizationVar() : Void
     {
-        assertEquals("7 new items.", I18n.tr("tweets|list", [ "n" => 7 ]));
+        assertEquals("7 new items.", i18n.tr("tweets|list", [ "n" => 7 ]));
     }
 }

@@ -4,17 +4,19 @@ import haxe.Json;
 
 class I18n
 {
-    public static var depthDelimiter : String = "/";
-    public static var varPrefix : String = ":";
-    public static var pluralizationVar : String = "_";
+    public var depthDelimiter : String = "/";
+    public var varPrefix : String = ":";
+    public var pluralizationVar : String = "_";
 
-    private static var trads : DynamicObject<Dynamic>;
+    private var trads : DynamicObject<Dynamic>;
 
-    public static function loadFromString(content : String, ?prefix : String) : Void
+    public function new()
     {
-        if (trads == null) {
-            trads = new DynamicObject<Dynamic>();
-        }
+        trads = new DynamicObject<Dynamic>();
+    }
+
+    public function loadFromString(content : String, ?prefix : String) : Void
+    {
         var data : DynamicObject<Dynamic> = Json.parse(content);
         for (key in data.keys()) {
             var name : String = key;
@@ -25,11 +27,8 @@ class I18n
         }
     }
 
-    public static function tr(id : String, ?vars : Map<String, Dynamic>) : String
+    public function tr(id : String, ?vars : Map<String, Dynamic>) : String
     {
-        if (trads == null) {
-            return id;
-        }
         var str : String = id;
         if (id.indexOf(depthDelimiter) != -1) {
             var o : DynamicObject<Dynamic> = fetch(trads, new String(id));
@@ -60,12 +59,12 @@ class I18n
         return str;
     }
 
-    public static function clear() : Void
+    public function clear() : Void
     {
         trads = new DynamicObject<Dynamic>();
     }
 
-    private static function update(el : DynamicObject<Dynamic>, rest : String, data : DynamicObject<Dynamic>) : Void
+    private function update(el : DynamicObject<Dynamic>, rest : String, data : DynamicObject<Dynamic>) : Void
     {
         var pos : Int = rest.indexOf(depthDelimiter);
         if (pos == -1) {
@@ -91,7 +90,7 @@ class I18n
         }
     }
 
-    private static function fetch(el : DynamicObject<Dynamic>, rest : String) : DynamicObject<Dynamic>
+    private function fetch(el : DynamicObject<Dynamic>, rest : String) : DynamicObject<Dynamic>
     {
         var pos : Int = rest.indexOf(depthDelimiter);
         if (pos == -1) {

@@ -5,11 +5,11 @@ import jsoni18n.I18n;
 
 class TrTestCase extends TestCase
 {
-    var json : String;
+    var i18n : I18n;
 
     override public function setup() : Void
     {
-        json = '{
+        var json : String = '{
             "welcome": {
                 "hello": "Hoy!",
                 "subtitle": "Welcome, :name!",
@@ -23,56 +23,54 @@ class TrTestCase extends TestCase
             },
             "title": "jsoni18n tests"
         }';
-        I18n.depthDelimiter = "/";
-        I18n.varPrefix = ":";
-        I18n.pluralizationVar = "_";
-        I18n.loadFromString(json);
+        i18n = new I18n();
+        i18n.loadFromString(json);
     }
 
     public function testBasic() : Void
     {
-        assertEquals("jsoni18n tests", I18n.tr("title"));
+        assertEquals("jsoni18n tests", i18n.tr("title"));
     }
 
     public function testUnknown() : Void
     {
-        assertEquals("brouzoufs", I18n.tr("brouzoufs"));
+        assertEquals("brouzoufs", i18n.tr("brouzoufs"));
     }
 
     public function testDepth() : Void
     {
-        assertEquals("Hoy!", I18n.tr("welcome/hello"));
+        assertEquals("Hoy!", i18n.tr("welcome/hello"));
     }
 
     public function testWrongDepth() : Void
     {
-        assertEquals("title/lol", I18n.tr("title/lol"));
+        assertEquals("title/lol", i18n.tr("title/lol"));
     }
 
     public function testWrongType() : Void
     {
-        assertEquals("welcome/content", I18n.tr("welcome/content"));
+        assertEquals("welcome/content", i18n.tr("welcome/content"));
     }
 
     public function testVar() : Void
     {
-        assertEquals("Welcome, Nekith!", I18n.tr("welcome/subtitle", [ "name" => "Nekith" ]));
+        assertEquals("Welcome, Nekith!", i18n.tr("welcome/subtitle", [ "name" => "Nekith" ]));
     }
 
     public function testPlur() : Void
     {
-        assertEquals("27 new items.", I18n.tr("news/list", [ "_" => 27 ]));
-        assertEquals("Nothing to display.", I18n.tr("news/list", [ "_" => 0 ]));
-        assertEquals("Only one new item.", I18n.tr("news/list", [ "_" => 1 ]));
+        assertEquals("27 new items.", i18n.tr("news/list", [ "_" => 27 ]));
+        assertEquals("Nothing to display.", i18n.tr("news/list", [ "_" => 0 ]));
+        assertEquals("Only one new item.", i18n.tr("news/list", [ "_" => 1 ]));
     }
 
     public function testWrongTypePlur() : Void
     {
-        assertEquals("news/list", I18n.tr("news/list"));
+        assertEquals("news/list", i18n.tr("news/list"));
     }
 
     public function testUtf() : Void
     {
-        assertEquals("Le contenu principal devrait être plus long, mais vous saisissez l\'idée.", I18n.tr("welcome/content/main"));
+        assertEquals("Le contenu principal devrait être plus long, mais vous saisissez l\'idée.", i18n.tr("welcome/content/main"));
     }
 }

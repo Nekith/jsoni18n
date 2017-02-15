@@ -63,6 +63,12 @@ There's only one import:
 import jsoni18n.I18n;
 ```
 
+Initialization:
+
+```haxe
+var i18n : I18n = new I18n();
+```
+
 For the following examples, we assume you do something like this:
 
 ```haxe
@@ -76,13 +82,13 @@ Then you load data:
 var jsonFileContent : String = myLangFileLoader();
 // or if you use OpenFL:
 // var jsonFileContent : String = Assets.getText(filename);
-I18n.loadFromString(jsonFileContent);
+i18n.loadFromString(jsonFileContent);
 ```
 
 Now, to translate something:
 
 ```haxe
-var hello : String = I18n.tr("welcome/hello");
+var hello : String = i18n.tr("welcome/hello");
 ```
 
 ### Prefix
@@ -90,8 +96,8 @@ var hello : String = I18n.tr("welcome/hello");
 You can add prefixes to keys from all data fetched by loadFromString() like this:
 
 ```haxe
-I18n.loadFromString(data, "ui/");
-I18n.tr("ui/welcome/hello"); // Hoy!
+i18n.loadFromString(data, "ui/");
+i18n.tr("ui/welcome/hello"); // Hoy!
 ```
 
 ### Variables
@@ -99,7 +105,7 @@ I18n.tr("ui/welcome/hello"); // Hoy!
 You can pass variables to strings returned by tr() like this:
 
 ```haxe
-I18n.tr("welcome/subtitle", [ "name" => "Nekith" ]); // Welcome, Nekith!
+i18n.tr("welcome/subtitle", [ "name" => "Nekith" ]); // Welcome, Nekith!
 ```
 
 ### Pluralization
@@ -107,16 +113,16 @@ I18n.tr("welcome/subtitle", [ "name" => "Nekith" ]); // Welcome, Nekith!
 It also handles pluralization for your convenience.
 
 ```haxe
-I18n.tr("news/list", [ "_" => 0 ]); // Nothing to display.
-I18n.tr("news/list", [ "_" => 12 ]); // 12 new items.
+i18n.tr("news/list", [ "_" => 0 ]); // Nothing to display.
+i18n.tr("news/list", [ "_" => 12 ]); // 12 new items.
 ```
 
 ### Configuration
 
 ```haxe
-I18n.depthDelimiter    =  ".";  // default: "/"
-I18n.varPrefix         =  "@";  // default: ":"
-I18n.pluralizationVar  =  "n";  // default: "_"
+i18n.depthDelimiter    =  ".";  // default: "/"
+i18n.varPrefix         =  "@";  // default: ":"
+i18n.pluralizationVar  =  "n";  // default: "_"
 ```
 
 ## License

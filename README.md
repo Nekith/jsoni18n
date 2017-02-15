@@ -38,17 +38,20 @@ It's JSON, objects and strings:
 
 ```json
 {
-  "welcome": {
-    "hello": "Hoy!",
-    "subtitle": "Welcome, :name!",
-    "content": {
-      "main": "Main content should be longer but you get the idea.",
-      "side": "Some useful side notes to shine in society."
+    "welcome": {
+        "hello": "Hoy!",
+        "subtitle": "Welcome, :name!",
+        "content": {
+            "main": "Main content should be longer but you get the idea.",
+            "side": "Some useful side notes to shine in society."
+        }
+    },
+    "news": {
+        "list": { "0": "Nothing to display.", "1": "Only one new item.", "_": ":_ new items." }
+    },
+    "secret": {
+        "intro": "It's a secret page! Do you have authorization?"
     }
-  },
-  "secret": {
-    "intro": "It's a secret page! Do you have authorization?"
-  }
 }
 ```
 
@@ -99,11 +102,19 @@ You can pass variables to strings returned by tr() like this:
 I18n.tr("welcome/subtitle", [ "name" => "Nekith" ]); // Welcome, Nekith!
 ```
 
+### Pluralization
+
+```haxe
+I18n.tr("news/list", [ "_" => 0 ]); // Nothing to display.
+I18n.tr("news/list", [ "_" => 12 ]); // 12 new items.
+```
+
 ### Configuration
 
 ```haxe
-I18n.depthDelimiter  =  "_";  // default: "/"
-I18n.varPrefix       =  "@";  // default: ":"
+I18n.depthDelimiter    =  ".";  // default: "/"
+I18n.varPrefix         =  "@";  // default: ":"
+I18n.pluralizationVar  =  "n";  // default: "_"
 ```
 
 ## License

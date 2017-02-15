@@ -18,6 +18,9 @@ class ConfigTestCase extends TestCase
                     "side": "Some useful side notes to shine in society."
                 }
             },
+            "tweets": {
+                "list": { "0": "Nothing to display.", "1": "Only one new item.", "n": "@n new items." }
+            },
             "secret": {
                 "intro": "It\'s a secret page! Do you have authorization?"
             },
@@ -25,16 +28,22 @@ class ConfigTestCase extends TestCase
         }';
         I18n.depthDelimiter = "|";
         I18n.varPrefix = "@";
+        I18n.pluralizationVar = "n";
         I18n.loadFromString(json);
     }
 
     public function testDepthDelimiter() : Void
     {
-        assertEquals(I18n.tr("welcome|hello"), "Hoy!");
+        assertEquals("Hoy!", I18n.tr("welcome|hello"));
     }
 
     public function testVarPrefix() : Void
     {
-        assertEquals(I18n.tr("welcome|subtitle", [ "name" => "Nekith" ]), "Welcome, Nekith!");
+        assertEquals("Welcome, Nekith!", I18n.tr("welcome|subtitle", [ "name" => "Nekith" ]));
+    }
+
+    public function testPluralizationVar() : Void
+    {
+        assertEquals("7 new items.", I18n.tr("tweets|list", [ "n" => 7 ]));
     }
 }

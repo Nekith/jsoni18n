@@ -4,8 +4,11 @@ import haxe.Json;
 
 class I18n
 {
-    static public var depthDelimiter : String = "/";
-    static public var varPrefix : String = ":";
+    public static var depthDelimiter : String = "/";
+    public static var varPrefix : String = ":";
+    public static var pluralizationVar : String = "_";
+
+    private static var trads : DynamicObject<Dynamic>;
 
     public static function loadFromString(content : String, ?prefix : String) : Void
     {
@@ -22,16 +25,29 @@ class I18n
         }
     }
 
-    public static function tr(id : String, ?vars : Map<String, String>) : String
+    public static function tr(id : String, ?vars : Map<String, Dynamic>) : String
     {
         if (trads == null) {
             return id;
         }
         var str : String = id;
         if (id.indexOf(depthDelimiter) != -1) {
-            var o = fetch(trads, new String(id));
+            var o : DynamicObject<Dynamic> = fetch(trads, new String(id));
             if (o != null) {
-                str = o;
+                if (Std.is(o, String)) {
+                    str = Std.string(o);
+                } else if (vars != null && vars.exists(pluralizationVar) && o.exists(pluralizationVar)) {
+                    var n : Null<Int> = Std.parseInt(vars[pluralizationVar]);
+                    if (n != null) {
+                        if (n == 0 && o.exists("0")) {
+                            str = o.get("0");
+                        } else if (n == 1 && o.exists("1")) {
+                            str = o.get("1");
+                        } else if (o.exists(pluralizationVar)) {
+                            str = o.get(pluralizationVar);
+                        }
+                    }
+                }
             }
         } else if (trads.exists(id) == true) {
             str = trads.get(id);
@@ -75,7 +91,7 @@ class I18n
         }
     }
 
-    private static function fetch(el : DynamicObject<Dynamic>, rest : String) : String
+    private static function fetch(el : DynamicObject<Dynamic>, rest : String) : DynamicObject<Dynamic>
     {
         var pos : Int = rest.indexOf(depthDelimiter);
         if (pos == -1) {
@@ -88,8 +104,6 @@ class I18n
         }
         return fetch(el.get(part), rest);
     }
-
-    private static var trads : DynamicObject<Dynamic>;
 }
 
 abstract DynamicObject<T>(Dynamic<T>) from Dynamic<T>
@@ -99,13 +113,11 @@ abstract DynamicObject<T>(Dynamic<T>) from Dynamic<T>
         this = {};
     }
 
-    @:arrayAccess
     public inline function set(key : String, value : T) : Void
     {
         Reflect.setField(this, key, value);
     }
 
-    @:arrayAccess
     public inline function get(key : String) : Null<T>
     {
         return Reflect.field(this, key);

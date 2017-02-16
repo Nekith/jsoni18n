@@ -131,6 +131,8 @@ i18n.pluralizationVar  =  "n";  // default: "_"
 
 ## Development
 
+Github issues are open if you have suggestions or bugs to report.
+
 ### Tests
 
 ```

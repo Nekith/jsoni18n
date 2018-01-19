@@ -122,7 +122,7 @@ i18n.tr("news/list", [ "_" => 12 ]); // 12 new items.
 ```haxe
 i18n.depthDelimiter    =  ".";  // default: "/"
 i18n.varPrefix         =  "@";  // default: ":"
-i18n.pluralizationVar  =  "n";  // default: "_"
+i18n.pluralizationVar  =  "*";  // default: "_"
 ```
 
 ## License

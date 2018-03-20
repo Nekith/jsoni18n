@@ -1,8 +1,8 @@
 language: haxe
 
 haxe:
-    - "3.4.4"
-    - "3.4.3"
+    - development
+    - "3.4.7"
     - "3.2.1"
 
 install:

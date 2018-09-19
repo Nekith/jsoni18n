@@ -142,3 +142,9 @@ haxe -main Main -lib jsoni18n -cpp build
 cd build
 ./Main
 ```
+
+Tested against:
+
+* 3.4.7
+* 3.4.6
+* 3.2.1

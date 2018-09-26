@@ -15,7 +15,7 @@ class I18n
         trads = new DynamicObject<Dynamic>();
     }
 
-    public function loadFromString(content : String, ?prefix : String) : Void
+    public function loadFromString(content : String, ?prefix : String, ?cb:Void->Void) : Void
     {
         var data : DynamicObject<Dynamic> = Json.parse(content);
         for (key in data.keys()) {
@@ -24,6 +24,9 @@ class I18n
                 name = prefix + name;
             }
             update(trads, name, data.get(key));
+        }
+        if (cb != null) {
+            cb();
         }
     }
 

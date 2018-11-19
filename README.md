@@ -57,7 +57,7 @@ It's JSON, objects and strings:
 
 ### Basics
 
-There's only one import:
+Import:
 
 ```haxe
 import jsoni18n.I18n;
@@ -69,20 +69,13 @@ Initialization:
 var i18n : I18n = new I18n();
 ```
 
-For the following examples, we assume you do something like this:
-
-```haxe
-// it could be Reg.lang, context.userLang, App.instance.settings["currentLanguage"] or ...
-var lang : String = myGetCurrentLanguage();
-```
-
-Then you load data:
+Load data:
 
 ```haxe
 var jsonFileContent : String = myLangFileLoader();
+i18n.loadFromString(jsonFileContent);
 // or if you use OpenFL:
 // var jsonFileContent : String = Assets.getText(filename);
-i18n.loadFromString(jsonFileContent);
 ```
 
 Now, to translate something:

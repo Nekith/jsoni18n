@@ -74,8 +74,6 @@ Load data:
 ```haxe
 var jsonFileContent : String = myLangFileLoader();
 i18n.loadFromString(jsonFileContent);
-// or if you use OpenFL:
-// var jsonFileContent : String = Assets.getText(filename);
 ```
 
 Now, to translate something:

@@ -129,14 +129,16 @@ Github issues are open if you have suggestions or bugs to report.
 ### Tests
 
 ```
+haxelib install utest
 haxelib dev jsoni18n .
 cd tests
-haxe -main Main -lib jsoni18n -cpp build
+haxe -main Main -lib jsoni18n -lib utest -cpp build
 cd build
 ./Main
 ```
 
 Tested against:
 
+* 4.0.0-rc.2
 * 3.4.7
 * 3.4.6

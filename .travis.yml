@@ -7,10 +7,11 @@ haxe:
 
 install:
     - haxelib install hxcpp
+    - haxelib install utest
 
 script:
     - haxelib dev jsoni18n .
     - cd tests
-    - haxe -main Main -lib jsoni18n -cpp build
+    - haxe -main Main -lib jsoni18n -lib utest -cpp build
     - cd build
     - ./Main

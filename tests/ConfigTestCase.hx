@@ -1,13 +1,14 @@
 package;
 
-import haxe.unit.TestCase;
+import utest.Test;
+import utest.Assert;
 import jsoni18n.I18n;
 
-class ConfigTestCase extends TestCase
+class ConfigTestCase extends Test
 {
     var i18n : I18n;
 
-    override public function setup() : Void
+    public function setupClass() : Void
     {
         var json : String = '{
             "welcome": {
@@ -35,16 +36,16 @@ class ConfigTestCase extends TestCase
 
     public function testDepthDelimiter() : Void
     {
-        assertEquals("Hoy!", i18n.tr("welcome|hello"));
+        Assert.equals("Hoy!", i18n.tr("welcome|hello"));
     }
 
     public function testVarPrefix() : Void
     {
-        assertEquals("Welcome, Nekith!", i18n.tr("welcome|subtitle", [ "name" => "Nekith" ]));
+        Assert.equals("Welcome, Nekith!", i18n.tr("welcome|subtitle", [ "name" => "Nekith" ]));
     }
 
     public function testPluralizationVar() : Void
     {
-        assertEquals("7 new items.", i18n.tr("tweets|list", [ "n" => 7 ]));
+        Assert.equals("7 new items.", i18n.tr("tweets|list", [ "n" => 7 ]));
     }
 }

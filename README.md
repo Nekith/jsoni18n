@@ -137,6 +137,6 @@ cd build
 
 Tested against:
 
-* 4.0.0-rc.2
+* 4.0.0-rc.5
 * 3.4.7
 * 3.4.6

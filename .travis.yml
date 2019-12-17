@@ -1,10 +1,10 @@
 language: haxe
 
 haxe:
+    - "4.0.5"
     - "4.0.2"
     - "4.0.0"
     - "3.4.7"
-    - "3.4.6"
 
 install:
     - haxelib install hxcpp

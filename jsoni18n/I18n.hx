@@ -4,6 +4,8 @@ import haxe.Json;
 
 class I18n
 {
+    // The depth delimiter can be set to "" to disable it.
+    // When the depth delimiter is disabled, pluralization won't be usable.
     public var depthDelimiter : String = "/";
     public var varPrefix : String = ":";
     public var pluralizationVar : String = "_";
@@ -30,10 +32,12 @@ class I18n
     public function tr(id : String, ?vars : Map<String, Dynamic>) : String
     {
         var str : String = id;
-        if (id.indexOf(depthDelimiter) != -1) {
+        if (depthDelimiter != "" && id.indexOf(depthDelimiter) != -1) {
             var o : DynamicObject<Dynamic> = fetch(trads, new String(id));
             if (o != null) {
-                if (Std.is(o, String)) {
+                if (Std.is(o, String) && Std.string(o) != "") {
+                    // Only return the translated string if it's not empty.
+                    // This way, translation files can have empty strings to denote untranslated strings.
                     str = Std.string(o);
                 } else if (vars != null && vars.exists(pluralizationVar) && o.exists(pluralizationVar)) {
                     var n : Null<Int> = Std.parseInt(vars[pluralizationVar]);
@@ -48,7 +52,9 @@ class I18n
                     }
                 }
             }
-        } else if (trads.exists(id) == true) {
+        } else if (trads.exists(id) == true && trads.get(id) != "") {
+            // Only return the translated string if it's not empty.
+            // This way, translation files can have empty strings to denote untranslated strings.
             str = trads.get(id);
         }
         if (vars != null) {
@@ -67,7 +73,7 @@ class I18n
     private function update(el : DynamicObject<Dynamic>, rest : String, data : DynamicObject<Dynamic>) : Void
     {
         var pos : Int = rest.indexOf(depthDelimiter);
-        if (pos == -1) {
+        if (depthDelimiter != "" && pos == -1) {
             if (el.exists(rest) == true) {
                 el = el.get(rest);
                 for (key in data.keys()) {
@@ -93,7 +99,7 @@ class I18n
     private function fetch(el : DynamicObject<Dynamic>, rest : String) : DynamicObject<Dynamic>
     {
         var pos : Int = rest.indexOf(depthDelimiter);
-        if (pos == -1) {
+        if (depthDelimiter != "" && pos == -1) {
             return el.get(rest);
         }
         var part : String = rest.substr(0, pos);

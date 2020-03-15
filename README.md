@@ -111,6 +111,8 @@ i18n.tr("news/list", [ "_" => 12 ]); // 12 new items.
 ### Configuration
 
 ```haxe
+// Set the depth delimiter to an empty string to disable the depth system entirely.
+// If the depth system is disabled, pluralization won't be available.
 i18n.depthDelimiter    =  ".";  // default: "/"
 i18n.varPrefix         =  "@";  // default: ":"
 i18n.pluralizationVar  =  "*";  // default: "_"

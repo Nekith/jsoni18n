@@ -2,8 +2,6 @@
 
 A flexible internationalization library working with JSON files in Haxe.
 
-[![Build Status](https://travis-ci.org/Nekith/jsoni18n.svg?branch=master)](https://travis-ci.org/Nekith/jsoni18n)
-
 ## Installation
 
 Haxelib:
@@ -130,14 +128,10 @@ Github issues are open if you have suggestions or bugs to report.
 haxelib install utest
 haxelib dev jsoni18n .
 cd tests
-haxe -main Main -lib jsoni18n -lib utest -cpp build
-cd build
-./Main
+haxe -main Main -lib jsoni18n -lib utest -hl build.hl
+hl build.hl
 ```
 
 Tested against:
 
-* 4.0.5
-* 4.0.2
-* 4.0.0
-* 3.4.7
+* 4.1.4

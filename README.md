@@ -4,28 +4,16 @@ A flexible internationalization library working with JSON files in Haxe.
 
 ## Installation
 
-Haxelib:
+Install with Haxelib:
 
 ```
 haxelib install jsoni18n
 ```
 
-OpenFL project XML file:
-
-```xml
-<haxelib name="jsoni18n" />
-```
-
-OpenFL project HXP file:
-
-```haxe
-haxelibs.push(new Haxelib("jsoni18n"));
-```
-
-Haxe command line arguments:
+Then, Haxe command line arguments or in a HXML file:
 
 ```
-haxe -lib jsoni18n ...
+-lib jsoni18n
 ```
 
 ## Usage

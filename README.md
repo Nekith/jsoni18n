@@ -2,6 +2,10 @@
 
 A flexible internationalization library working with JSON files in Haxe.
 
+* Does not assume the task of handling the origin/source of the translations (e.g. opening files).
+* Has nothing about date localization.
+* Has been made with coded strings (`welcome/hello`) as translation key in mind, not sentences in a source language (`Hello!`).
+
 ## Installation
 
 Install with Haxelib:
@@ -65,7 +69,7 @@ i18n.loadFromString(jsonFileContent);
 Now, to translate something:
 
 ```haxe
-var hello : String = i18n.tr("welcome/hello");
+var hello : String = i18n.tr("welcome/hello"); // Hoy!
 ```
 
 ### Prefix

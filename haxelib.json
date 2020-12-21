@@ -4,8 +4,8 @@
   "license": "BSD",
   "tags": ["cross", "i18n", "translation", "internationalization", "localization"],
   "description": "A flexible internationalization library working with JSON files in Haxe.",
-  "version": "1.0.1",
-  "releasenote": "Replace haxe.unit with utest library for tests.",
+  "version": "1.0.2",
+  "releasenote": "Fix casting errors on pluralization with latest Haxe versions",
   "contributors": ["Nekith"],
   "dependencies": {}
 }

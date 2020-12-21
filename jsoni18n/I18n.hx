@@ -36,7 +36,7 @@ class I18n
                 if (Std.is(o, String)) {
                     str = Std.string(o);
                 } else if (vars != null && vars.exists(pluralizationVar) && o.exists(pluralizationVar)) {
-                    var n : Null<Int> = Std.parseInt(vars[pluralizationVar]);
+                    var n : Null<Int> = vars[pluralizationVar];
                     if (n != null) {
                         if (n == 0 && o.exists("0")) {
                             str = o.get("0");
@@ -53,7 +53,7 @@ class I18n
         }
         if (vars != null) {
             for (key in vars.keys()) {
-                str = StringTools.replace(str, varPrefix + key, vars[key]);
+                str = StringTools.replace(str, varPrefix + key, Std.string(vars[key]));
             }
         }
         return str;

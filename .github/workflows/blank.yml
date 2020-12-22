@@ -20,7 +20,6 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-        
       - name: Setup Haxe environment
         # You may pin to the exact commit or the version.
         # uses: krdlab/setup-haxe@e81e3136250a43a615b3b2decab985c410772710
@@ -28,13 +27,17 @@ jobs:
         with:
           haxe-version: 4.1.4
 
-      - name: Run a multi-line script
+      - name: Configure Haxe Environment
         run: |
           haxe -version
           haxelib install utest
           haxelib install hxcpp
           haxelib dev jsoni18n .
+      - name: Compile tests
+        run: |
           cd tests
           haxe -main Main -lib jsoni18n -lib utest -cpp build
+      - name: Run tests
+        run: |
           cd build
           ./Main

@@ -39,5 +39,5 @@ jobs:
           haxe -main Main -lib jsoni18n -lib utest -cpp build
       - name: Run tests
         run: |
-          cd build
+          cd tests/build
           ./Main

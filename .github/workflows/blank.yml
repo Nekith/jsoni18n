@@ -31,7 +31,8 @@ jobs:
       - name: Run a multi-line script
         run: |
           haxe -version
-          haxelib install utest hxcpp
+          haxelib install utest
+          haxelib install hxcpp
           haxelib dev jsoni18n .
           cd tests
           haxe -main Main -lib jsoni18n -lib utest -cpp build

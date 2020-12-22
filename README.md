@@ -126,4 +126,5 @@ hl build.hl
 
 Tested against:
 
-* 4.1.4
+* Haxe 4.1.4, HashLink 1.11.0
+* Haxe 4.1.4, hxcpp

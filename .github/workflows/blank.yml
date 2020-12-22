@@ -30,8 +30,8 @@ jobs:
       - name: Configure Haxe Environment
         run: |
           haxe -version
-          haxelib install utest
-          haxelib install hxcpp
+          haxelib install utest 1.13.1
+          haxelib install hxcpp 4.1.15
           haxelib dev jsoni18n .
       - name: Compile tests
         run: |

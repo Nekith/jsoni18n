@@ -1,0 +1,43 @@
+name: Tests
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - name: Setup Haxe environment
+        # You may pin to the exact commit or the version.
+        # uses: krdlab/setup-haxe@e81e3136250a43a615b3b2decab985c410772710
+        uses: krdlab/setup-haxe@v1.1.4
+        with:
+          haxe-version: 4.1.4
+
+      - name: Configure Haxe Environment
+        run: |
+          haxe -version
+          haxelib install utest 1.13.1
+          haxelib install hxcpp 4.1.15
+          haxelib dev jsoni18n .
+      - name: Compile tests
+        run: |
+          cd tests
+          haxe -main Main -lib jsoni18n -lib utest -cpp build
+      - name: Run tests
+        run: |
+          cd tests/build
+          ./Main

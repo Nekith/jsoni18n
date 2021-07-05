@@ -128,4 +128,4 @@ Tested against:
 
 * Haxe 4.1.4, HashLink 1.11.0
 * Haxe 4.1.5, hxcpp
-* Haxe 4.2.1, hxcpp
+* Haxe 4.2.3, hxcpp

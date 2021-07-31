@@ -29,7 +29,7 @@ class I18n {
 		if (id.indexOf(depthDelimiter) != -1) {
 			var o:DynamicObject<Dynamic> = fetch(trads, new String(id));
 			if (o != null) {
-				if (Std.is(o, String)) {
+				if (Std.isOfType(o, String)) {
 					str = Std.string(o);
 				} else if (vars != null && vars.exists(pluralizationVar) && o.exists(pluralizationVar)) {
 					var n:Null<Int> = vars[pluralizationVar];

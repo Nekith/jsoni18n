@@ -26,32 +26,10 @@ class I18n {
 	}
 
 	public function tr(id:String, ?vars:Map<String, Dynamic>):String {
-		var str:String = id;
 		var o:DynamicObject<Dynamic> = fetch(trads, new String(id));
-		if (Std.isOfType(o, String)) {
-			str = Std.string(o);
-		} else if (vars != null) {
-			if (vars.exists(pluralizationVar) && o.exists(pluralizationVar)) {
-				var n:Null<Int> = vars[pluralizationVar];
-				if (n != null) {
-					if (n == 0 && o.exists("0")) {
-						str = o.get("0");
-					} else if (n == 1 && o.exists("1")) {
-						str = o.get("1");
-					} else {
-						str = o.get(pluralizationVar);
-					}
-				}
-			} else if (vars.exists(concordVar) && o.exists(concordVar)) {
-				var c:Null<String> = vars[concordVar];
-				if (c != null) {
-					if (o.exists(c)) {
-						str = o.get(c);
-					} else {
-						str = o.get(concordVar);
-					}
-				}
-			}
+		var str = handle(o, vars);
+		if (str == null) {
+			return id;
 		}
 		if (vars != null) {
 			for (key in vars.keys()) {
@@ -101,6 +79,40 @@ class I18n {
 			return null;
 		}
 		return fetch(el.get(part), rest);
+	}
+
+	private function handle(o:DynamicObject<Dynamic>, ?vars:Map<String, Dynamic>):Null<String> {
+		if (vars == null) {
+			if (Std.isOfType(o, String)) {
+				return cast(o, String);
+			}
+			return null;
+		}
+		if (vars.exists(pluralizationVar) && o.exists(pluralizationVar)) {
+			var n:Null<Int> = vars[pluralizationVar];
+			if (n != null) {
+				if (n == 0 && o.exists("0")) {
+					o = o.get("0");
+				} else if (n == 1 && o.exists("1")) {
+					o = o.get("1");
+				} else {
+					o = o.get(pluralizationVar);
+				}
+			}
+		} else if (vars.exists(concordVar) && o.exists(concordVar)) {
+			var c:Null<String> = vars[concordVar];
+			if (c != null) {
+				if (o.exists(c)) {
+					o = o.get(c);
+				} else {
+					o = o.get(concordVar);
+				}
+			}
+		}
+		if (Std.isOfType(o, String)) {
+			return cast(o, String);
+		}
+		return handle(o, vars);
 	}
 }
 

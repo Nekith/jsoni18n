@@ -39,6 +39,9 @@ It's JSON, objects and strings:
     "news": {
         "list": { "0": "Nothing to display.", "1": "Only one new item.", "_": ":_ new items." }
     },
+    "person": {
+        "f": "Female", "m": "Male", "$": "Person"
+    },
     "secret": {
         "intro": "It's a secret page! Do you have authorization?"
     }
@@ -98,12 +101,22 @@ i18n.tr("news/list", [ "_" => 0 ]); // Nothing to display.
 i18n.tr("news/list", [ "_" => 12 ]); // 12 new items.
 ```
 
+### Concord
+
+It also handles concordance for your convenience.
+
+```haxe
+i18n.tr("person", [ "$" => 'f' ]); // Female
+i18n.tr("person", [ "$" => 'o' ]); // Person
+```
+
 ### Configuration
 
 ```haxe
 i18n.depthDelimiter    =  ".";  // default: "/"
 i18n.varPrefix         =  "@";  // default: ":"
 i18n.pluralizationVar  =  "*";  // default: "_"
+i18n.concordVar        =  "^";  // default: "$"
 ```
 
 ## License

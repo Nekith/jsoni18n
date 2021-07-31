@@ -6,6 +6,7 @@ class I18n {
 	public var depthDelimiter:String = "/";
 	public var varPrefix:String = ":";
 	public var pluralizationVar:String = "_";
+	public var concordVar:String = '$';
 
 	private var trads:DynamicObject<Dynamic>;
 
@@ -26,26 +27,31 @@ class I18n {
 
 	public function tr(id:String, ?vars:Map<String, Dynamic>):String {
 		var str:String = id;
-		if (id.indexOf(depthDelimiter) != -1) {
-			var o:DynamicObject<Dynamic> = fetch(trads, new String(id));
-			if (o != null) {
-				if (Std.isOfType(o, String)) {
-					str = Std.string(o);
-				} else if (vars != null && vars.exists(pluralizationVar) && o.exists(pluralizationVar)) {
-					var n:Null<Int> = vars[pluralizationVar];
-					if (n != null) {
-						if (n == 0 && o.exists("0")) {
-							str = o.get("0");
-						} else if (n == 1 && o.exists("1")) {
-							str = o.get("1");
-						} else if (o.exists(pluralizationVar)) {
-							str = o.get(pluralizationVar);
-						}
+		var o:DynamicObject<Dynamic> = fetch(trads, new String(id));
+		if (Std.isOfType(o, String)) {
+			str = Std.string(o);
+		} else if (vars != null) {
+			if (vars.exists(pluralizationVar) && o.exists(pluralizationVar)) {
+				var n:Null<Int> = vars[pluralizationVar];
+				if (n != null) {
+					if (n == 0 && o.exists("0")) {
+						str = o.get("0");
+					} else if (n == 1 && o.exists("1")) {
+						str = o.get("1");
+					} else {
+						str = o.get(pluralizationVar);
+					}
+				}
+			} else if (vars.exists(concordVar) && o.exists(concordVar)) {
+				var c:Null<String> = vars[concordVar];
+				if (c != null) {
+					if (o.exists(c)) {
+						str = o.get(c);
+					} else {
+						str = o.get(concordVar);
 					}
 				}
 			}
-		} else if (trads.exists(id) == true) {
-			str = trads.get(id);
 		}
 		if (vars != null) {
 			for (key in vars.keys()) {

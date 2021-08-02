@@ -77,7 +77,7 @@ var hello : String = i18n.tr("welcome/hello"); // Hoy!
 
 ### Prefix
 
-You can add prefixes to keys from all data fetched by loadFromString() like this:
+You can add a prefix to keys from all data fetched by loadFromString() like this:
 
 ```haxe
 i18n.loadFromString(data, "ui/");
@@ -106,8 +106,8 @@ i18n.tr("news/list", [ "_" => 12 ]); // 12 new items.
 It also handles concordance for your convenience.
 
 ```haxe
-i18n.tr("person", [ "$" => 'f' ]); // Female
-i18n.tr("person", [ "$" => 'o' ]); // Person
+i18n.tr("person", [ "$" => "f" ]); // Female
+i18n.tr("person", [ "$" => "o" ]); // Person
 ```
 
 ### Configuration

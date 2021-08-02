@@ -27,6 +27,8 @@ class I18n {
 
 	public function tr(id:String, ?vars:Map<String, Dynamic>):String {
 		var o:DynamicObject<Dynamic> = fetch(trads, new String(id));
+		if (o == null)
+			return id;
 		var str = handle(o, vars);
 		if (str == null) {
 			return id;

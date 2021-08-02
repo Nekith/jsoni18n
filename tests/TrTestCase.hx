@@ -61,6 +61,7 @@ class TrTestCase extends Test {
 
 	public function testUnknown():Void {
 		Assert.equals("brouzoufs", i18n.tr("brouzoufs"));
+		Assert.equals("brouzoufs/with/depth", i18n.tr("brouzoufs/with/depth"));
 	}
 
 	public function testDepth():Void {

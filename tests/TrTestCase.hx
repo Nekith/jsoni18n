@@ -21,35 +21,40 @@ class TrTestCase extends Test {
                 "list": { "0": "Nothing to display.", "1": "Only one new item.", "_": ":_ new items." }
             },
             "title": "jsoni18n tests",
-            "person": {
-                "f": "Female", "m": "Male", "$": "Person"
-            },
-            "persons": {
-                "0": "No one",
-                "1": {
-                    "f": "1 woman",
-                    "m": "1 man",
-                    "$": "1 person"
-                },
-                "_": {
-                    "f": ":_ women",
-                    "m": ":_ men",
-                    "$": ":_ persons"
-                }
-            },
-            "segfault": {
-                "0": "No one",
-                "1": {
-                    "f": "1 woman",
-                    "m": "1 man",
-                    "o": "1 person"
-                },
-                "_": {
-                    "f": ":_ women",
-                    "m": ":_ men",
-                    "o": ":_ persons"
-                }
-            }
+			"author": {
+				"f": "Female", "m": "Male", "$": "Person"
+			},
+			"people": {
+				"person": {
+					"f": "Female", "m": "Male", "$": "Person"
+				},
+				"persons": {
+					"0": "No one",
+					"1": {
+						"f": "1 woman",
+						"m": "1 man",
+						"$": "1 person"
+					},
+					"_": {
+						"f": ":_ women",
+						"m": ":_ men",
+						"$": ":_ persons"
+					}
+				},
+				"segfault": {
+					"0": "No one",
+					"1": {
+						"f": "1 woman",
+						"m": "1 man",
+						"o": "1 person"
+					},
+					"_": {
+						"f": ":_ women",
+						"m": ":_ men",
+						"o": ":_ persons"
+					}
+				}
+			}
         }';
 		i18n = new I18n();
 		i18n.loadFromString(json);
@@ -91,24 +96,25 @@ class TrTestCase extends Test {
 	}
 
 	public function testConcord():Void {
-		Assert.equals("Female", i18n.tr("person", ["$" => "f"]));
-		Assert.equals("Male", i18n.tr("person", ["$" => "m"]));
-		Assert.equals("Person", i18n.tr("person", ["$" => "o"]));
+		Assert.equals("Male", i18n.tr("author", ["$" => "m"]));
+		Assert.equals("Female", i18n.tr("people/person", ["$" => "f"]));
+		Assert.equals("Male", i18n.tr("people/person", ["$" => "m"]));
+		Assert.equals("Person", i18n.tr("people/person", ["$" => "o"]));
 	}
 
 	public function testWrongTypeConcord():Void {
-		Assert.equals("person", i18n.tr("person"));
+		Assert.equals("people/person", i18n.tr("people/person"));
 	}
 
 	public function testPlurConcord():Void {
-		Assert.equals("56 women", i18n.tr("persons", ["$" => "f", "_" => 56]));
-		Assert.equals("1 man", i18n.tr("persons", ["$" => "m", "_" => 1]));
-		Assert.equals("421 persons", i18n.tr("persons", ["$" => "o", "_" => 421]));
-		Assert.equals("No one", i18n.tr("persons", ["$" => "m", "_" => 0]));
+		Assert.equals("56 women", i18n.tr("people/persons", ["$" => "f", "_" => 56]));
+		Assert.equals("1 man", i18n.tr("people/persons", ["$" => "m", "_" => 1]));
+		Assert.equals("421 persons", i18n.tr("people/persons", ["$" => "o", "_" => 421]));
+		Assert.equals("No one", i18n.tr("people/persons", ["$" => "m", "_" => 0]));
 	}
 
 	public function testMustNotSegfault():Void {
-		Assert.equals("56 women", i18n.tr("persons", ["$" => "f", "_" => 56]));
+		Assert.equals("people/segfault", i18n.tr("people/segfault", ["$" => "f", "_" => 56]));
 	}
 
 	public function testUtf():Void {

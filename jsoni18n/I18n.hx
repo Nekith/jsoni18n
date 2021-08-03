@@ -84,6 +84,7 @@ class I18n {
 	}
 
 	private function handle(o:DynamicObject<Dynamic>, ?vars:Map<String, Dynamic>):Null<String> {
+		var change = false;
 		if (vars == null) {
 			if (Std.isOfType(o, String)) {
 				return cast(o, String);
@@ -95,10 +96,13 @@ class I18n {
 			if (n != null) {
 				if (n == 0 && o.exists("0")) {
 					o = o.get("0");
+					change = true;
 				} else if (n == 1 && o.exists("1")) {
 					o = o.get("1");
+					change = true;
 				} else {
 					o = o.get(pluralizationVar);
+					change = true;
 				}
 			}
 		} else if (vars.exists(concordVar) && o.exists(concordVar)) {
@@ -106,13 +110,18 @@ class I18n {
 			if (c != null) {
 				if (o.exists(c)) {
 					o = o.get(c);
+					change = true;
 				} else {
 					o = o.get(concordVar);
+					change = true;
 				}
 			}
 		}
 		if (Std.isOfType(o, String)) {
 			return cast(o, String);
+		}
+		if (change == false) {
+			return null;
 		}
 		return handle(o, vars);
 	}

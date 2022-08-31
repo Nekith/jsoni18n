@@ -140,6 +140,6 @@ hl build.hl
 
 Tested against:
 
-* Haxe 4.2.3 - HashLink 1.11.0 and JS
+* Haxe 4.2.5 - HashLink 1.11.0 and JS
 * Haxe 4.1.5 - hxcpp
-* Haxe 4.2.3 - hxcpp
+* Haxe 4.2.5 - hxcpp

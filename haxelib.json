@@ -7,7 +7,6 @@
     "i18n",
     "translation",
     "internationalization",
-    "localization",
     "json"
   ],
   "description": "A flexible internationalization library working with JSON files in Haxe.",

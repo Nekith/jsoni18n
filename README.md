@@ -38,7 +38,11 @@ It's JSON, objects and strings:
         }
     },
     "news": {
-        "list": { "0": "Nothing to display.", "1": "Only one new item.", "_": ":_ new items." }
+        "list": {
+            "0": "Nothing to display.",
+            "1": "Only one new item.",
+            "_": ":_ new items."
+        }
     },
     "person": {
         "f": "Woman", "m": "Man", "$": "Person"
@@ -142,4 +146,4 @@ Tested against:
 
 * Haxe 4.2.5 - HashLink 1.11.0 and JS
 * Haxe 4.2.5 - hxcpp
-* Haxe 4.3.2 - hxcpp
+* Haxe 4.3.3 - hxcpp
